@@ -19,6 +19,7 @@ RUN export uid=1000 gid=1000 && \
 		openjdk-9-jre \
 		xvfb \
         xz-utils \
+	curl \
 	python3 \
 	sudo \
     && add-apt-repository ppa:ubuntuhandbook1/apps \
@@ -36,6 +37,7 @@ RUN (wget -q -O- https://downloads.arduino.cc/arduino-${ARDUINO_IDE_VERSION}-lin
 	| tar xJC /usr/local/share \
 	&& ln -s /usr/local/share/arduino-${ARDUINO_IDE_VERSION} /usr/local/share/arduino \
 	&& ln -s /usr/local/share/arduino-${ARDUINO_IDE_VERSION}/arduino /usr/local/bin/arduino)
+RUN curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh
 
 ENV DISPLAY :1.0
 

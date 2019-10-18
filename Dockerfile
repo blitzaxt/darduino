@@ -22,6 +22,7 @@ RUN export uid=1000 gid=1000 && \
 	curl \
 	python3 \
 	sudo \
+	libgtk2.0-0 \
     && add-apt-repository ppa:ubuntuhandbook1/apps \
     && apt-get update \
     && apt-get install -y avrdude avrdude-doc \

@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
 ENV HOME /home/developer
 WORKDIR /home/developer
@@ -16,7 +16,7 @@ RUN export uid=1000 gid=1000 && \
 	&& apt-get install -y \
         software-properties-common \
 		wget \
-		openjdk-9-jre \
+		default-jre \
 		xvfb \
         xz-utils \
 	curl \

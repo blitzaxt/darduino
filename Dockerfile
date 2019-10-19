@@ -20,12 +20,12 @@ RUN export uid=1000 gid=1000 && \
 		xvfb \
         xz-utils \
 	curl \
-	python3 \
 	sudo \
 	libgtk2.0-0 \
+    && add-apt-repository ppa:deadsnakes/ppa \
     && add-apt-repository ppa:ubuntuhandbook1/apps \
     && apt-get update \
-    && apt-get install -y avrdude avrdude-doc \
+    && apt-get install -y avrdude avrdude-doc python3.7.2\
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/*
 
@@ -37,7 +37,8 @@ ENV ARDUINO_IDE_VERSION 1.8.5
 RUN (wget -q -O- https://downloads.arduino.cc/arduino-${ARDUINO_IDE_VERSION}-linux64.tar.xz \
 	| tar xJC /usr/local/share \
 	&& ln -s /usr/local/share/arduino-${ARDUINO_IDE_VERSION} /usr/local/share/arduino \
-	&& ln -s /usr/local/share/arduino-${ARDUINO_IDE_VERSION}/arduino /usr/local/bin/arduino)
+	&& ln -s /usr/local/share/arduino-${ARDUINO_IDE_VERSION}/arduino /usr/local/bin/arduino) \
+	&& ln -s /usr/bin/python3 /usr/bin/python
 RUN curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh
 
 ENV DISPLAY :1.0
